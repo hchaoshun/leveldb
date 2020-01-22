@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++   -fno-exceptions -fno-rtti -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/coding_test.dir/util/testutil.cc.o CMakeFiles/coding_test.dir/util/coding_test.cc.o  -o coding_test libleveldb.a lib/libgmockd.a lib/libgtestd.a 
