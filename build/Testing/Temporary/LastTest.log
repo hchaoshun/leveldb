@@ -1,10 +1,10 @@
-Start testing: Jan 18 16:08 CST
+Start testing: Jan 22 11:51 CST
 ----------------------------------------------------------
 1/31 Testing: c_test
 1/31 Test: c_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/c_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"c_test" start time: Jan 18 16:08 CST
+"c_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 === Test create_objects
@@ -25,37 +25,37 @@ Output:
 === Test cleanup
 PASS
 <end of output>
-Test time =   1.55 sec
+Test time =   0.90 sec
 ----------------------------------------------------------
 Test Passed.
-"c_test" end time: Jan 18 16:08 CST
-"c_test" time elapsed: 00:00:01
+"c_test" end time: Jan 22 11:51 CST
+"c_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
 2/31 Testing: fault_injection_test
 2/31 Test: fault_injection_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/fault_injection_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"fault_injection_test" start time: Jan 18 16:08 CST
+"fault_injection_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 2 tests from FaultInjectionTest
 [ RUN      ] FaultInjectionTest.FaultTestNoLogReuse
-[       OK ] FaultInjectionTest.FaultTestNoLogReuse (1356 ms)
+[       OK ] FaultInjectionTest.FaultTestNoLogReuse (1352 ms)
 [ RUN      ] FaultInjectionTest.FaultTestWithLogReuse
-[       OK ] FaultInjectionTest.FaultTestWithLogReuse (782 ms)
-[----------] 2 tests from FaultInjectionTest (2138 ms total)
+[       OK ] FaultInjectionTest.FaultTestWithLogReuse (862 ms)
+[----------] 2 tests from FaultInjectionTest (2214 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (2138 ms total)
+[==========] 2 tests from 1 test suite ran. (2214 ms total)
 [  PASSED  ] 2 tests.
 <end of output>
-Test time =   2.43 sec
+Test time =   2.22 sec
 ----------------------------------------------------------
 Test Passed.
-"fault_injection_test" end time: Jan 18 16:08 CST
+"fault_injection_test" end time: Jan 22 11:51 CST
 "fault_injection_test" time elapsed: 00:00:02
 ----------------------------------------------------------
 
@@ -63,24 +63,24 @@ Test Passed.
 3/31 Test: issue178_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/issue178_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"issue178_test" start time: Jan 18 16:08 CST
+"issue178_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from Issue178
 [ RUN      ] Issue178.Test
-[       OK ] Issue178.Test (5000 ms)
-[----------] 1 test from Issue178 (5000 ms total)
+[       OK ] Issue178.Test (5406 ms)
+[----------] 1 test from Issue178 (5406 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (5000 ms total)
+[==========] 1 test from 1 test suite ran. (5406 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   5.31 sec
+Test time =   5.43 sec
 ----------------------------------------------------------
 Test Passed.
-"issue178_test" end time: Jan 18 16:08 CST
+"issue178_test" end time: Jan 22 11:51 CST
 "issue178_test" time elapsed: 00:00:05
 ----------------------------------------------------------
 
@@ -88,24 +88,24 @@ Test Passed.
 4/31 Test: issue200_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/issue200_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"issue200_test" start time: Jan 18 16:08 CST
+"issue200_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from Issue200
 [ RUN      ] Issue200.Test
-[       OK ] Issue200.Test (48 ms)
-[----------] 1 test from Issue200 (48 ms total)
+[       OK ] Issue200.Test (47 ms)
+[----------] 1 test from Issue200 (47 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (48 ms total)
+[==========] 1 test from 1 test suite ran. (47 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.34 sec
+Test time =   0.06 sec
 ----------------------------------------------------------
 Test Passed.
-"issue200_test" end time: Jan 18 16:08 CST
+"issue200_test" end time: Jan 22 11:51 CST
 "issue200_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -113,7 +113,7 @@ Test Passed.
 5/31 Test: issue320_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/issue320_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"issue320_test" start time: Jan 18 16:08 CST
+"issue320_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 1 test from 1 test suite.
@@ -320,34 +320,34 @@ count: 197000
 count: 198000
 count: 199000
 count: 200000
-[       OK ] Issue320.Test (14121 ms)
-[----------] 1 test from Issue320 (14121 ms total)
+[       OK ] Issue320.Test (13907 ms)
+[----------] 1 test from Issue320 (13907 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (14121 ms total)
+[==========] 1 test from 1 test suite ran. (13907 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =  14.42 sec
+Test time =  13.92 sec
 ----------------------------------------------------------
 Test Passed.
-"issue320_test" end time: Jan 18 16:09 CST
-"issue320_test" time elapsed: 00:00:14
+"issue320_test" end time: Jan 22 11:51 CST
+"issue320_test" time elapsed: 00:00:13
 ----------------------------------------------------------
 
 6/31 Testing: env_test
 6/31 Test: env_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/env_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"env_test" start time: Jan 18 16:09 CST
+"env_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 7 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 7 tests from EnvTest
 [ RUN      ] EnvTest.ReadWrite
-[       OK ] EnvTest.ReadWrite (99 ms)
+[       OK ] EnvTest.ReadWrite (115 ms)
 [ RUN      ] EnvTest.RunImmediately
-[       OK ] EnvTest.RunImmediately (1 ms)
+[       OK ] EnvTest.RunImmediately (0 ms)
 [ RUN      ] EnvTest.RunMany
 [       OK ] EnvTest.RunMany (0 ms)
 [ RUN      ] EnvTest.StartThread
@@ -355,19 +355,19 @@ Output:
 [ RUN      ] EnvTest.TestOpenNonExistentFile
 [       OK ] EnvTest.TestOpenNonExistentFile (0 ms)
 [ RUN      ] EnvTest.ReopenWritableFile
-[       OK ] EnvTest.ReopenWritableFile (0 ms)
+[       OK ] EnvTest.ReopenWritableFile (1 ms)
 [ RUN      ] EnvTest.ReopenAppendableFile
 [       OK ] EnvTest.ReopenAppendableFile (1 ms)
-[----------] 7 tests from EnvTest (101 ms total)
+[----------] 7 tests from EnvTest (117 ms total)
 
 [----------] Global test environment tear-down
-[==========] 7 tests from 1 test suite ran. (102 ms total)
+[==========] 7 tests from 1 test suite ran. (117 ms total)
 [  PASSED  ] 7 tests.
 <end of output>
-Test time =   0.40 sec
+Test time =   0.13 sec
 ----------------------------------------------------------
 Test Passed.
-"env_test" end time: Jan 18 16:09 CST
+"env_test" end time: Jan 22 11:51 CST
 "env_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -375,7 +375,7 @@ Test Passed.
 7/31 Test: status_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/status_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"status_test" start time: Jan 18 16:09 CST
+"status_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 1 test from 1 test suite.
@@ -389,10 +389,10 @@ Output:
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.29 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"status_test" end time: Jan 18 16:09 CST
+"status_test" end time: Jan 22 11:51 CST
 "status_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -400,7 +400,7 @@ Test Passed.
 8/31 Test: no_destructor_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/no_destructor_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"no_destructor_test" start time: Jan 18 16:09 CST
+"no_destructor_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 2 tests from 1 test suite.
@@ -416,10 +416,10 @@ Output:
 [==========] 2 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 2 tests.
 <end of output>
-Test time =   0.34 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"no_destructor_test" end time: Jan 18 16:09 CST
+"no_destructor_test" end time: Jan 22 11:51 CST
 "no_destructor_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -427,7 +427,7 @@ Test Passed.
 9/31 Test: app_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/app_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"app_test" start time: Jan 18 16:09 CST
+"app_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 ValueExample
@@ -435,7 +435,7 @@ ValueExample
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"app_test" end time: Jan 18 16:09 CST
+"app_test" end time: Jan 22 11:51 CST
 "app_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -443,7 +443,7 @@ Test Passed.
 10/31 Test: autocompact_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/autocompact_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"autocompact_test" start time: Jan 18 16:09 CST
+"autocompact_test" start time: Jan 22 11:51 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 2 tests from 1 test suite.
@@ -461,7 +461,7 @@ iter   8 =>  59.008 MB [other   0.000 MB]
 iter   9 =>  38.492 MB [other   0.000 MB]
 iter  10 =>  17.976 MB [other   0.000 MB]
 iter  11 =>   4.103 MB [other   0.000 MB]
-[       OK ] AutoCompactTest.ReadAll (12273 ms)
+[       OK ] AutoCompactTest.ReadAll (12258 ms)
 [ RUN      ] AutoCompactTest.ReadHalf
 iter   1 =>  50.017 MB [other  50.023 MB]
 iter   2 =>  50.020 MB [other  50.021 MB]
@@ -472,17 +472,17 @@ iter   6 =>  50.020 MB [other  50.021 MB]
 iter   7 =>  29.504 MB [other  50.021 MB]
 iter   8 =>   8.988 MB [other  50.021 MB]
 iter   9 =>   4.103 MB [other  34.389 MB]
-[       OK ] AutoCompactTest.ReadHalf (10393 ms)
-[----------] 2 tests from AutoCompactTest (22666 ms total)
+[       OK ] AutoCompactTest.ReadHalf (10307 ms)
+[----------] 2 tests from AutoCompactTest (22565 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (22666 ms total)
+[==========] 2 tests from 1 test suite ran. (22565 ms total)
 [  PASSED  ] 2 tests.
 <end of output>
-Test time =  22.96 sec
+Test time =  22.57 sec
 ----------------------------------------------------------
 Test Passed.
-"autocompact_test" end time: Jan 18 16:09 CST
+"autocompact_test" end time: Jan 22 11:52 CST
 "autocompact_test" time elapsed: 00:00:22
 ----------------------------------------------------------
 
@@ -490,7 +490,7 @@ Test Passed.
 11/31 Test: corruption_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/corruption_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"corruption_test" start time: Jan 18 16:09 CST
+"corruption_test" start time: Jan 22 11:52 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 12 tests from 1 test suite.
@@ -499,45 +499,45 @@ Output:
 [ RUN      ] CorruptionTest.Recovery
 expected=100..100; got=100; bad_keys=0; bad_values=0; missed=0
 expected=36..36; got=36; bad_keys=0; bad_values=0; missed=64
-[       OK ] CorruptionTest.Recovery (2 ms)
+[       OK ] CorruptionTest.Recovery (3 ms)
 [ RUN      ] CorruptionTest.RecoverWriteError
 [       OK ] CorruptionTest.RecoverWriteError (0 ms)
 [ RUN      ] CorruptionTest.NewFileErrorDuringWrite
-[       OK ] CorruptionTest.NewFileErrorDuringWrite (30 ms)
+[       OK ] CorruptionTest.NewFileErrorDuringWrite (35 ms)
 [ RUN      ] CorruptionTest.TableFile
 expected=90..99; got=99; bad_keys=0; bad_values=1; missed=0
 [       OK ] CorruptionTest.TableFile (2 ms)
 [ RUN      ] CorruptionTest.TableFileRepair
 expected=95..99; got=98; bad_keys=0; bad_values=0; missed=2
-[       OK ] CorruptionTest.TableFileRepair (5 ms)
+[       OK ] CorruptionTest.TableFileRepair (2 ms)
 [ RUN      ] CorruptionTest.TableFileIndexData
 expected=5000..9999; got=7962; bad_keys=0; bad_values=0; missed=0
-[       OK ] CorruptionTest.TableFileIndexData (117 ms)
+[       OK ] CorruptionTest.TableFileIndexData (119 ms)
 [ RUN      ] CorruptionTest.MissingDescriptor
 expected=1000..1000; got=1000; bad_keys=0; bad_values=0; missed=0
-[       OK ] CorruptionTest.MissingDescriptor (15 ms)
+[       OK ] CorruptionTest.MissingDescriptor (14 ms)
 [ RUN      ] CorruptionTest.SequenceNumberRecovery
-[       OK ] CorruptionTest.SequenceNumberRecovery (1 ms)
+[       OK ] CorruptionTest.SequenceNumberRecovery (0 ms)
 [ RUN      ] CorruptionTest.CorruptedDescriptor
-[       OK ] CorruptionTest.CorruptedDescriptor (0 ms)
+[       OK ] CorruptionTest.CorruptedDescriptor (1 ms)
 [ RUN      ] CorruptionTest.CompactionInputError
 expected=5..9; got=9; bad_keys=0; bad_values=1; missed=0
 expected=10000..10000; got=10000; bad_keys=0; bad_values=0; missed=0
 [       OK ] CorruptionTest.CompactionInputError (123 ms)
 [ RUN      ] CorruptionTest.CompactionInputErrorParanoid
-[       OK ] CorruptionTest.CompactionInputErrorParanoid (203 ms)
+[       OK ] CorruptionTest.CompactionInputErrorParanoid (208 ms)
 [ RUN      ] CorruptionTest.UnrelatedKeys
 [       OK ] CorruptionTest.UnrelatedKeys (0 ms)
-[----------] 12 tests from CorruptionTest (498 ms total)
+[----------] 12 tests from CorruptionTest (507 ms total)
 
 [----------] Global test environment tear-down
-[==========] 12 tests from 1 test suite ran. (498 ms total)
+[==========] 12 tests from 1 test suite ran. (507 ms total)
 [  PASSED  ] 12 tests.
 <end of output>
-Test time =   0.84 sec
+Test time =   0.52 sec
 ----------------------------------------------------------
 Test Passed.
-"corruption_test" end time: Jan 18 16:09 CST
+"corruption_test" end time: Jan 22 11:52 CST
 "corruption_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -545,64 +545,64 @@ Test Passed.
 12/31 Test: db_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/db_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"db_test" start time: Jan 18 16:09 CST
+"db_test" start time: Jan 22 11:52 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 56 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 56 tests from DBTest
 [ RUN      ] DBTest.Empty
-[       OK ] DBTest.Empty (144 ms)
+[       OK ] DBTest.Empty (167 ms)
 [ RUN      ] DBTest.EmptyKey
-[       OK ] DBTest.EmptyKey (127 ms)
+[       OK ] DBTest.EmptyKey (153 ms)
 [ RUN      ] DBTest.EmptyValue
-[       OK ] DBTest.EmptyValue (132 ms)
+[       OK ] DBTest.EmptyValue (180 ms)
 [ RUN      ] DBTest.ReadWrite
-[       OK ] DBTest.ReadWrite (136 ms)
+[       OK ] DBTest.ReadWrite (150 ms)
 [ RUN      ] DBTest.PutDeleteGet
-[       OK ] DBTest.PutDeleteGet (138 ms)
+[       OK ] DBTest.PutDeleteGet (160 ms)
 [ RUN      ] DBTest.GetFromImmutableLayer
-[       OK ] DBTest.GetFromImmutableLayer (274 ms)
+[       OK ] DBTest.GetFromImmutableLayer (310 ms)
 [ RUN      ] DBTest.GetFromVersions
-[       OK ] DBTest.GetFromVersions (272 ms)
+[       OK ] DBTest.GetFromVersions (302 ms)
 [ RUN      ] DBTest.GetMemUsage
-[       OK ] DBTest.GetMemUsage (137 ms)
+[       OK ] DBTest.GetMemUsage (153 ms)
 [ RUN      ] DBTest.GetSnapshot
-[       OK ] DBTest.GetSnapshot (388 ms)
+[       OK ] DBTest.GetSnapshot (464 ms)
 [ RUN      ] DBTest.GetIdenticalSnapshots
-[       OK ] DBTest.GetIdenticalSnapshots (375 ms)
+[       OK ] DBTest.GetIdenticalSnapshots (424 ms)
 [ RUN      ] DBTest.IterateOverEmptySnapshot
-[       OK ] DBTest.IterateOverEmptySnapshot (246 ms)
+[       OK ] DBTest.IterateOverEmptySnapshot (292 ms)
 [ RUN      ] DBTest.GetLevel0Ordering
-[       OK ] DBTest.GetLevel0Ordering (392 ms)
+[       OK ] DBTest.GetLevel0Ordering (426 ms)
 [ RUN      ] DBTest.GetOrderedByLevels
-[       OK ] DBTest.GetOrderedByLevels (383 ms)
+[       OK ] DBTest.GetOrderedByLevels (446 ms)
 [ RUN      ] DBTest.GetPicksCorrectFile
-[       OK ] DBTest.GetPicksCorrectFile (513 ms)
+[       OK ] DBTest.GetPicksCorrectFile (555 ms)
 [ RUN      ] DBTest.GetEncountersEmptyLevel
-[       OK ] DBTest.GetEncountersEmptyLevel (4658 ms)
+[       OK ] DBTest.GetEncountersEmptyLevel (4715 ms)
 [ RUN      ] DBTest.IterEmpty
-[       OK ] DBTest.IterEmpty (46 ms)
+[       OK ] DBTest.IterEmpty (49 ms)
 [ RUN      ] DBTest.IterSingle
-[       OK ] DBTest.IterSingle (49 ms)
+[       OK ] DBTest.IterSingle (45 ms)
 [ RUN      ] DBTest.IterMulti
-[       OK ] DBTest.IterMulti (50 ms)
+[       OK ] DBTest.IterMulti (54 ms)
 [ RUN      ] DBTest.IterSmallAndLargeMix
-[       OK ] DBTest.IterSmallAndLargeMix (46 ms)
+[       OK ] DBTest.IterSmallAndLargeMix (48 ms)
 [ RUN      ] DBTest.IterMultiWithDelete
 [       OK ] DBTest.IterMultiWithDelete (161 ms)
 [ RUN      ] DBTest.Recover
-[       OK ] DBTest.Recover (411 ms)
+[       OK ] DBTest.Recover (396 ms)
 [ RUN      ] DBTest.RecoveryWithEmptyLog
-[       OK ] DBTest.RecoveryWithEmptyLog (526 ms)
+[       OK ] DBTest.RecoveryWithEmptyLog (516 ms)
 [ RUN      ] DBTest.RecoverDuringMemtableCompaction
-[       OK ] DBTest.RecoverDuringMemtableCompaction (898 ms)
+[       OK ] DBTest.RecoverDuringMemtableCompaction (886 ms)
 [ RUN      ] DBTest.MinorCompactionsHappen
-[       OK ] DBTest.MinorCompactionsHappen (370 ms)
+[       OK ] DBTest.MinorCompactionsHappen (408 ms)
 [ RUN      ] DBTest.RecoverWithLargeLog
-[       OK ] DBTest.RecoverWithLargeLog (147 ms)
+[       OK ] DBTest.RecoverWithLargeLog (177 ms)
 [ RUN      ] DBTest.CompactionsGenerateMultipleFiles
-[       OK ] DBTest.CompactionsGenerateMultipleFiles (323 ms)
+[       OK ] DBTest.CompactionsGenerateMultipleFiles (351 ms)
 [ RUN      ] DBTest.RepeatedWritesToSameKey
 after 1: 0 files
 after 2: 0 files
@@ -699,47 +699,47 @@ after 92: 6 files
 after 93: 7 files
 after 94: 4 files
 after 95: 5 files
-[       OK ] DBTest.RepeatedWritesToSameKey (3872 ms)
+[       OK ] DBTest.RepeatedWritesToSameKey (4068 ms)
 [ RUN      ] DBTest.SparseMerge
-[       OK ] DBTest.SparseMerge (5578 ms)
+[       OK ] DBTest.SparseMerge (5657 ms)
 [ RUN      ] DBTest.ApproximateSizes
-[       OK ] DBTest.ApproximateSizes (1404 ms)
+[       OK ] DBTest.ApproximateSizes (1452 ms)
 [ RUN      ] DBTest.ApproximateSizes_MixOfSmallAndLarge
-[       OK ] DBTest.ApproximateSizes_MixOfSmallAndLarge (751 ms)
+[       OK ] DBTest.ApproximateSizes_MixOfSmallAndLarge (841 ms)
 [ RUN      ] DBTest.IteratorPinsRef
-[       OK ] DBTest.IteratorPinsRef (120 ms)
+[       OK ] DBTest.IteratorPinsRef (137 ms)
 [ RUN      ] DBTest.Snapshot
-[       OK ] DBTest.Snapshot (142 ms)
+[       OK ] DBTest.Snapshot (159 ms)
 [ RUN      ] DBTest.HiddenValuesAreRemoved
-[       OK ] DBTest.HiddenValuesAreRemoved (1565 ms)
+[       OK ] DBTest.HiddenValuesAreRemoved (1651 ms)
 [ RUN      ] DBTest.DeletionMarkers1
-[       OK ] DBTest.DeletionMarkers1 (222 ms)
+[       OK ] DBTest.DeletionMarkers1 (204 ms)
 [ RUN      ] DBTest.DeletionMarkers2
-[       OK ] DBTest.DeletionMarkers2 (201 ms)
+[       OK ] DBTest.DeletionMarkers2 (224 ms)
 [ RUN      ] DBTest.OverlapInLevel0
-[       OK ] DBTest.OverlapInLevel0 (856 ms)
+[       OK ] DBTest.OverlapInLevel0 (914 ms)
 [ RUN      ] DBTest.L0_CompactionBug_Issue44_a
-[       OK ] DBTest.L0_CompactionBug_Issue44_a (1297 ms)
+[       OK ] DBTest.L0_CompactionBug_Issue44_a (1337 ms)
 [ RUN      ] DBTest.L0_CompactionBug_Issue44_b
-[       OK ] DBTest.L0_CompactionBug_Issue44_b (2467 ms)
+[       OK ] DBTest.L0_CompactionBug_Issue44_b (2503 ms)
 [ RUN      ] DBTest.Fflush_Issue474
-[       OK ] DBTest.Fflush_Issue474 (648 ms)
+[       OK ] DBTest.Fflush_Issue474 (672 ms)
 [ RUN      ] DBTest.ComparatorCheck
-[       OK ] DBTest.ComparatorCheck (46 ms)
+[       OK ] DBTest.ComparatorCheck (48 ms)
 [ RUN      ] DBTest.CustomComparator
-[       OK ] DBTest.CustomComparator (307 ms)
+[       OK ] DBTest.CustomComparator (304 ms)
 [ RUN      ] DBTest.ManualCompaction
-[       OK ] DBTest.ManualCompaction (533 ms)
+[       OK ] DBTest.ManualCompaction (565 ms)
 [ RUN      ] DBTest.DBOpen_Options
-[       OK ] DBTest.DBOpen_Options (140 ms)
+[       OK ] DBTest.DBOpen_Options (138 ms)
 [ RUN      ] DBTest.DestroyEmptyDir
 [       OK ] DBTest.DestroyEmptyDir (52 ms)
 [ RUN      ] DBTest.DestroyOpenDB
-[       OK ] DBTest.DestroyOpenDB (101 ms)
+[       OK ] DBTest.DestroyOpenDB (102 ms)
 [ RUN      ] DBTest.Locking
-[       OK ] DBTest.Locking (50 ms)
+[       OK ] DBTest.Locking (53 ms)
 [ RUN      ] DBTest.NoSpace
-[       OK ] DBTest.NoSpace (125 ms)
+[       OK ] DBTest.NoSpace (137 ms)
 [ RUN      ] DBTest.NonWritableFileSystem
 iter 0; errors 0
 iter 1; errors 0
@@ -761,55 +761,55 @@ iter 16; errors 15
 iter 17; errors 16
 iter 18; errors 17
 iter 19; errors 18
-[       OK ] DBTest.NonWritableFileSystem (2038 ms)
+[       OK ] DBTest.NonWritableFileSystem (2039 ms)
 [ RUN      ] DBTest.WriteSyncError
-[       OK ] DBTest.WriteSyncError (88 ms)
+[       OK ] DBTest.WriteSyncError (82 ms)
 [ RUN      ] DBTest.ManifestWriteError
-[       OK ] DBTest.ManifestWriteError (295 ms)
+[       OK ] DBTest.ManifestWriteError (301 ms)
 [ RUN      ] DBTest.MissingSSTFile
-[       OK ] DBTest.MissingSSTFile (88 ms)
+[       OK ] DBTest.MissingSSTFile (77 ms)
 [ RUN      ] DBTest.StillReadSST
-[       OK ] DBTest.StillReadSST (118 ms)
+[       OK ] DBTest.StillReadSST (115 ms)
 [ RUN      ] DBTest.FilesDeletedAfterCompaction
-[       OK ] DBTest.FilesDeletedAfterCompaction (732 ms)
+[       OK ] DBTest.FilesDeletedAfterCompaction (729 ms)
 [ RUN      ] DBTest.BloomFilter
 10000 present => 10125 reads
 10000 missing => 181 reads
-[       OK ] DBTest.BloomFilter (346 ms)
+[       OK ] DBTest.BloomFilter (365 ms)
 [ RUN      ] DBTest.MultiThreaded
 ... starting thread 0
-... starting thread 2
 ... starting thread 3
 ... starting thread 1
-... stopping thread 3 after 280204 ops
-... stopping thread 0 after 281138 ops
-... stopping thread 2 after 281427 ops
-... stopping thread 1 after 280610 ops
+... starting thread 2
+... stopping thread 0 after 272111 ops
+... stopping thread 2 after 273360 ops
+... stopping thread 1 after 273294 ops
+... stopping thread 3 after 275136 ops
+... starting thread 0
+... starting thread 1
+... starting thread 2
+... starting thread 3
+... stopping thread 2 after 270232 ops
+... stopping thread 3 after 270193 ops
+... stopping thread 0 after 270561 ops
+... stopping thread 1 after 270091 ops
 ... starting thread 0
 ... starting thread 3
 ... starting thread 2
 ... starting thread 1
-... stopping thread 1 after 302062 ops
-... stopping thread 3 after 302261 ops
-... stopping thread 0 after 302646 ops
-... stopping thread 2 after 302034 ops
+... stopping thread 3 after 275230 ops
+... stopping thread 0 after 275037 ops
+... stopping thread 2 after 275196 ops
+... stopping thread 1 after 274724 ops
 ... starting thread 0
 ... starting thread 3
-... starting thread 2
 ... starting thread 1
-... stopping thread 1 after 270929 ops
-... stopping thread 3 after 270824 ops
-... stopping thread 2 after 270290 ops
-... stopping thread 0 after 269662 ops
-... starting thread 0
 ... starting thread 2
-... starting thread 1
-... starting thread 3
-... stopping thread 1 after 255282 ops
-... stopping thread 2 after 259195 ops
-... stopping thread 0 after 258363 ops
-... stopping thread 3 after 258193 ops
-[       OK ] DBTest.MultiThreaded (40600 ms)
+... stopping thread 0 after 271370 ops
+... stopping thread 2 after 271403 ops
+... stopping thread 3 after 271431 ops
+... stopping thread 1 after 271718 ops
+[       OK ] DBTest.MultiThreaded (40580 ms)
 [ RUN      ] DBTest.Randomized
 Step 0 of 10000
 1 entries compared: ok=1
@@ -2411,25 +2411,25 @@ Step 9900 of 10000
 2778 entries compared: ok=1
 2751 entries compared: ok=1
 2778 entries compared: ok=1
-[       OK ] DBTest.Randomized (18412 ms)
-[----------] 56 tests from DBTest (94538 ms total)
+[       OK ] DBTest.Randomized (19361 ms)
+[----------] 56 tests from DBTest (96855 ms total)
 
 [----------] Global test environment tear-down
-[==========] 56 tests from 1 test suite ran. (94538 ms total)
+[==========] 56 tests from 1 test suite ran. (96855 ms total)
 [  PASSED  ] 56 tests.
 <end of output>
-Test time =  94.84 sec
+Test time =  96.87 sec
 ----------------------------------------------------------
 Test Passed.
-"db_test" end time: Jan 18 16:11 CST
-"db_test" time elapsed: 00:01:34
+"db_test" end time: Jan 22 11:53 CST
+"db_test" time elapsed: 00:01:36
 ----------------------------------------------------------
 
 13/31 Testing: dbformat_test
 13/31 Test: dbformat_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/dbformat_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"dbformat_test" start time: Jan 18 16:11 CST
+"dbformat_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 6 tests from 1 test suite.
@@ -2440,23 +2440,23 @@ Output:
 [ RUN      ] FormatTest.InternalKey_DecodeFromEmpty
 [       OK ] FormatTest.InternalKey_DecodeFromEmpty (0 ms)
 [ RUN      ] FormatTest.InternalKeyShortSeparator
-[       OK ] FormatTest.InternalKeyShortSeparator (0 ms)
+[       OK ] FormatTest.InternalKeyShortSeparator (1 ms)
 [ RUN      ] FormatTest.InternalKeyShortestSuccessor
 [       OK ] FormatTest.InternalKeyShortestSuccessor (0 ms)
 [ RUN      ] FormatTest.ParsedInternalKeyDebugString
 [       OK ] FormatTest.ParsedInternalKeyDebugString (0 ms)
 [ RUN      ] FormatTest.InternalKeyDebugString
 [       OK ] FormatTest.InternalKeyDebugString (0 ms)
-[----------] 6 tests from FormatTest (0 ms total)
+[----------] 6 tests from FormatTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 6 tests from 1 test suite ran. (0 ms total)
+[==========] 6 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 6 tests.
 <end of output>
-Test time =   0.88 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"dbformat_test" end time: Jan 18 16:11 CST
+"dbformat_test" end time: Jan 22 11:53 CST
 "dbformat_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2464,7 +2464,7 @@ Test Passed.
 14/31 Test: filename_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/filename_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"filename_test" start time: Jan 18 16:11 CST
+"filename_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 2 tests from 1 test suite.
@@ -2480,10 +2480,10 @@ Output:
 [==========] 2 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 2 tests.
 <end of output>
-Test time =   0.30 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"filename_test" end time: Jan 18 16:11 CST
+"filename_test" end time: Jan 22 11:53 CST
 "filename_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2491,7 +2491,7 @@ Test Passed.
 15/31 Test: log_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/log_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"log_test" start time: Jan 18 16:11 CST
+"log_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 38 tests from 1 test suite.
@@ -2502,21 +2502,21 @@ Output:
 [ RUN      ] LogTest.ReadWrite
 [       OK ] LogTest.ReadWrite (0 ms)
 [ RUN      ] LogTest.ManyBlocks
-[       OK ] LogTest.ManyBlocks (37 ms)
+[       OK ] LogTest.ManyBlocks (38 ms)
 [ RUN      ] LogTest.Fragmentation
-[       OK ] LogTest.Fragmentation (1 ms)
+[       OK ] LogTest.Fragmentation (2 ms)
 [ RUN      ] LogTest.MarginalTrailer
-[       OK ] LogTest.MarginalTrailer (1 ms)
+[       OK ] LogTest.MarginalTrailer (0 ms)
 [ RUN      ] LogTest.MarginalTrailer2
 [       OK ] LogTest.MarginalTrailer2 (0 ms)
 [ RUN      ] LogTest.ShortTrailer
 [       OK ] LogTest.ShortTrailer (0 ms)
 [ RUN      ] LogTest.AlignedEof
-[       OK ] LogTest.AlignedEof (0 ms)
+[       OK ] LogTest.AlignedEof (1 ms)
 [ RUN      ] LogTest.OpenForAppend
 [       OK ] LogTest.OpenForAppend (0 ms)
 [ RUN      ] LogTest.RandomRead
-[       OK ] LogTest.RandomRead (32 ms)
+[       OK ] LogTest.RandomRead (28 ms)
 [ RUN      ] LogTest.ReadError
 [       OK ] LogTest.ReadError (0 ms)
 [ RUN      ] LogTest.BadRecordType
@@ -2540,7 +2540,7 @@ Output:
 [ RUN      ] LogTest.MissingLastIsIgnored
 [       OK ] LogTest.MissingLastIsIgnored (0 ms)
 [ RUN      ] LogTest.PartialLastIsIgnored
-[       OK ] LogTest.PartialLastIsIgnored (1 ms)
+[       OK ] LogTest.PartialLastIsIgnored (0 ms)
 [ RUN      ] LogTest.SkipIntoMultiRecord
 [       OK ] LogTest.SkipIntoMultiRecord (0 ms)
 [ RUN      ] LogTest.ErrorJoinsRecords
@@ -2562,9 +2562,9 @@ Output:
 [ RUN      ] LogTest.ReadFourthFirstBlockTrailer
 [       OK ] LogTest.ReadFourthFirstBlockTrailer (0 ms)
 [ RUN      ] LogTest.ReadFourthMiddleBlock
-[       OK ] LogTest.ReadFourthMiddleBlock (1 ms)
+[       OK ] LogTest.ReadFourthMiddleBlock (0 ms)
 [ RUN      ] LogTest.ReadFourthLastBlock
-[       OK ] LogTest.ReadFourthLastBlock (0 ms)
+[       OK ] LogTest.ReadFourthLastBlock (1 ms)
 [ RUN      ] LogTest.ReadFourthStart
 [       OK ] LogTest.ReadFourthStart (0 ms)
 [ RUN      ] LogTest.ReadInitialOffsetIntoBlockPadding
@@ -2573,16 +2573,16 @@ Output:
 [       OK ] LogTest.ReadEnd (0 ms)
 [ RUN      ] LogTest.ReadPastEnd
 [       OK ] LogTest.ReadPastEnd (0 ms)
-[----------] 38 tests from LogTest (75 ms total)
+[----------] 38 tests from LogTest (73 ms total)
 
 [----------] Global test environment tear-down
-[==========] 38 tests from 1 test suite ran. (75 ms total)
+[==========] 38 tests from 1 test suite ran. (73 ms total)
 [  PASSED  ] 38 tests.
 <end of output>
-Test time =   0.39 sec
+Test time =   0.08 sec
 ----------------------------------------------------------
 Test Passed.
-"log_test" end time: Jan 18 16:11 CST
+"log_test" end time: Jan 22 11:53 CST
 "log_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2590,36 +2590,36 @@ Test Passed.
 16/31 Test: recovery_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/recovery_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"recovery_test" start time: Jan 18 16:11 CST
+"recovery_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 7 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 7 tests from RecoveryTest
 [ RUN      ] RecoveryTest.ManifestReused
-[       OK ] RecoveryTest.ManifestReused (18 ms)
+[       OK ] RecoveryTest.ManifestReused (14 ms)
 [ RUN      ] RecoveryTest.LargeManifestCompacted
-[       OK ] RecoveryTest.LargeManifestCompacted (56 ms)
+[       OK ] RecoveryTest.LargeManifestCompacted (54 ms)
 [ RUN      ] RecoveryTest.NoLogFiles
-[       OK ] RecoveryTest.NoLogFiles (15 ms)
+[       OK ] RecoveryTest.NoLogFiles (18 ms)
 [ RUN      ] RecoveryTest.LogFileReuse
-[       OK ] RecoveryTest.LogFileReuse (61 ms)
+[       OK ] RecoveryTest.LogFileReuse (56 ms)
 [ RUN      ] RecoveryTest.MultipleMemTables
-[       OK ] RecoveryTest.MultipleMemTables (93 ms)
+[       OK ] RecoveryTest.MultipleMemTables (84 ms)
 [ RUN      ] RecoveryTest.MultipleLogFiles
-[       OK ] RecoveryTest.MultipleLogFiles (75 ms)
+[       OK ] RecoveryTest.MultipleLogFiles (77 ms)
 [ RUN      ] RecoveryTest.ManifestMissing
-[       OK ] RecoveryTest.ManifestMissing (12 ms)
-[----------] 7 tests from RecoveryTest (330 ms total)
+[       OK ] RecoveryTest.ManifestMissing (14 ms)
+[----------] 7 tests from RecoveryTest (317 ms total)
 
 [----------] Global test environment tear-down
-[==========] 7 tests from 1 test suite ran. (330 ms total)
+[==========] 7 tests from 1 test suite ran. (317 ms total)
 [  PASSED  ] 7 tests.
 <end of output>
-Test time =   0.64 sec
+Test time =   0.33 sec
 ----------------------------------------------------------
 Test Passed.
-"recovery_test" end time: Jan 18 16:11 CST
+"recovery_test" end time: Jan 22 11:53 CST
 "recovery_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2627,7 +2627,7 @@ Test Passed.
 17/31 Test: skiplist_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/skiplist_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"skiplist_test" start time: Jan 18 16:11 CST
+"skiplist_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 8 tests from 1 test suite.
@@ -2638,7 +2638,7 @@ Output:
 [ RUN      ] SkipTest.InsertAndLookup
 [       OK ] SkipTest.InsertAndLookup (2 ms)
 [ RUN      ] SkipTest.ConcurrentWithoutThreads
-[       OK ] SkipTest.ConcurrentWithoutThreads (8 ms)
+[       OK ] SkipTest.ConcurrentWithoutThreads (7 ms)
 [ RUN      ] SkipTest.Concurrent1
 Run 0 of 1000
 Run 100 of 1000
@@ -2650,7 +2650,7 @@ Run 600 of 1000
 Run 700 of 1000
 Run 800 of 1000
 Run 900 of 1000
-[       OK ] SkipTest.Concurrent1 (109 ms)
+[       OK ] SkipTest.Concurrent1 (107 ms)
 [ RUN      ] SkipTest.Concurrent2
 Run 0 of 1000
 Run 100 of 1000
@@ -2662,7 +2662,7 @@ Run 600 of 1000
 Run 700 of 1000
 Run 800 of 1000
 Run 900 of 1000
-[       OK ] SkipTest.Concurrent2 (116 ms)
+[       OK ] SkipTest.Concurrent2 (100 ms)
 [ RUN      ] SkipTest.Concurrent3
 Run 0 of 1000
 Run 100 of 1000
@@ -2674,7 +2674,7 @@ Run 600 of 1000
 Run 700 of 1000
 Run 800 of 1000
 Run 900 of 1000
-[       OK ] SkipTest.Concurrent3 (109 ms)
+[       OK ] SkipTest.Concurrent3 (107 ms)
 [ RUN      ] SkipTest.Concurrent4
 Run 0 of 1000
 Run 100 of 1000
@@ -2686,7 +2686,7 @@ Run 600 of 1000
 Run 700 of 1000
 Run 800 of 1000
 Run 900 of 1000
-[       OK ] SkipTest.Concurrent4 (98 ms)
+[       OK ] SkipTest.Concurrent4 (103 ms)
 [ RUN      ] SkipTest.Concurrent5
 Run 0 of 1000
 Run 100 of 1000
@@ -2698,17 +2698,17 @@ Run 600 of 1000
 Run 700 of 1000
 Run 800 of 1000
 Run 900 of 1000
-[       OK ] SkipTest.Concurrent5 (102 ms)
-[----------] 8 tests from SkipTest (544 ms total)
+[       OK ] SkipTest.Concurrent5 (98 ms)
+[----------] 8 tests from SkipTest (524 ms total)
 
 [----------] Global test environment tear-down
-[==========] 8 tests from 1 test suite ran. (544 ms total)
+[==========] 8 tests from 1 test suite ran. (524 ms total)
 [  PASSED  ] 8 tests.
 <end of output>
-Test time =   0.84 sec
+Test time =   0.53 sec
 ----------------------------------------------------------
 Test Passed.
-"skiplist_test" end time: Jan 18 16:11 CST
+"skiplist_test" end time: Jan 22 11:53 CST
 "skiplist_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2716,24 +2716,24 @@ Test Passed.
 18/31 Test: version_edit_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/version_edit_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"version_edit_test" start time: Jan 18 16:11 CST
+"version_edit_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from VersionEditTest
 [ RUN      ] VersionEditTest.EncodeDecode
-[       OK ] VersionEditTest.EncodeDecode (1 ms)
-[----------] 1 test from VersionEditTest (1 ms total)
+[       OK ] VersionEditTest.EncodeDecode (0 ms)
+[----------] 1 test from VersionEditTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (1 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.30 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"version_edit_test" end time: Jan 18 16:11 CST
+"version_edit_test" end time: Jan 22 11:53 CST
 "version_edit_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2741,7 +2741,7 @@ Test Passed.
 19/31 Test: version_set_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/version_set_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"version_set_test" start time: Jan 18 16:11 CST
+"version_set_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 13 tests from 2 test suites.
@@ -2782,10 +2782,10 @@ Output:
 [==========] 13 tests from 2 test suites ran. (0 ms total)
 [  PASSED  ] 13 tests.
 <end of output>
-Test time =   0.33 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"version_set_test" end time: Jan 18 16:11 CST
+"version_set_test" end time: Jan 22 11:53 CST
 "version_set_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2793,7 +2793,7 @@ Test Passed.
 20/31 Test: write_batch_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/write_batch_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"write_batch_test" start time: Jan 18 16:11 CST
+"write_batch_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 5 tests from 1 test suite.
@@ -2812,13 +2812,13 @@ Output:
 [----------] 5 tests from WriteBatchTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 5 tests from 1 test suite ran. (1 ms total)
+[==========] 5 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 5 tests.
 <end of output>
-Test time =   0.31 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"write_batch_test" end time: Jan 18 16:11 CST
+"write_batch_test" end time: Jan 22 11:53 CST
 "write_batch_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2826,14 +2826,14 @@ Test Passed.
 21/31 Test: memenv_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/memenv_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"memenv_test" start time: Jan 18 16:11 CST
+"memenv_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 7 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 7 tests from MemEnvTest
 [ RUN      ] MemEnvTest.Basics
-[       OK ] MemEnvTest.Basics (0 ms)
+[       OK ] MemEnvTest.Basics (1 ms)
 [ RUN      ] MemEnvTest.ReadWrite
 [       OK ] MemEnvTest.ReadWrite (0 ms)
 [ RUN      ] MemEnvTest.Locks
@@ -2846,16 +2846,16 @@ Output:
 [       OK ] MemEnvTest.OverwriteOpenFile (0 ms)
 [ RUN      ] MemEnvTest.DBTest
 [       OK ] MemEnvTest.DBTest (1 ms)
-[----------] 7 tests from MemEnvTest (4 ms total)
+[----------] 7 tests from MemEnvTest (5 ms total)
 
 [----------] Global test environment tear-down
 [==========] 7 tests from 1 test suite ran. (5 ms total)
 [  PASSED  ] 7 tests.
 <end of output>
-Test time =   0.30 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"memenv_test" end time: Jan 18 16:11 CST
+"memenv_test" end time: Jan 22 11:53 CST
 "memenv_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2863,7 +2863,7 @@ Test Passed.
 22/31 Test: filter_block_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/filter_block_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"filter_block_test" start time: Jan 18 16:11 CST
+"filter_block_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 3 tests from 1 test suite.
@@ -2881,10 +2881,10 @@ Output:
 [==========] 3 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 3 tests.
 <end of output>
-Test time =   0.30 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"filter_block_test" end time: Jan 18 16:11 CST
+"filter_block_test" end time: Jan 22 11:53 CST
 "filter_block_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2892,24 +2892,24 @@ Test Passed.
 23/31 Test: table_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/table_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"table_test" start time: Jan 18 16:11 CST
+"table_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 11 tests from 3 test suites.
 [----------] Global test environment set-up.
 [----------] 8 tests from Harness
 [ RUN      ] Harness.Empty
-[       OK ] Harness.Empty (195 ms)
+[       OK ] Harness.Empty (207 ms)
 [ RUN      ] Harness.ZeroRestartPointsInBlock
 [       OK ] Harness.ZeroRestartPointsInBlock (0 ms)
 [ RUN      ] Harness.SimpleEmptyKey
-[       OK ] Harness.SimpleEmptyKey (183 ms)
+[       OK ] Harness.SimpleEmptyKey (200 ms)
 [ RUN      ] Harness.SimpleSingle
-[       OK ] Harness.SimpleSingle (172 ms)
+[       OK ] Harness.SimpleSingle (184 ms)
 [ RUN      ] Harness.SimpleMulti
-[       OK ] Harness.SimpleMulti (195 ms)
+[       OK ] Harness.SimpleMulti (211 ms)
 [ RUN      ] Harness.SimpleSpecialKey
-[       OK ] Harness.SimpleSpecialKey (177 ms)
+[       OK ] Harness.SimpleSpecialKey (190 ms)
 [ RUN      ] Harness.Randomized
 case 1 of 16: num_entries = 0
 case 1 of 16: num_entries = 10
@@ -3151,10 +3151,10 @@ case 16 of 16: num_entries = 1250
 case 16 of 16: num_entries = 1450
 case 16 of 16: num_entries = 1650
 case 16 of 16: num_entries = 1850
-[       OK ] Harness.Randomized (6260 ms)
+[       OK ] Harness.Randomized (6238 ms)
 [ RUN      ] Harness.RandomizedLongDB
-[       OK ] Harness.RandomizedLongDB (763 ms)
-[----------] 8 tests from Harness (7945 ms total)
+[       OK ] Harness.RandomizedLongDB (792 ms)
+[----------] 8 tests from Harness (8022 ms total)
 
 [----------] 1 test from MemTableTest
 [ RUN      ] MemTableTest.Simple
@@ -3167,20 +3167,20 @@ key: 'largekeyg' -> 'vlarge'
 
 [----------] 2 tests from TableTest
 [ RUN      ] TableTest.ApproximateOffsetOfPlain
-[       OK ] TableTest.ApproximateOffsetOfPlain (2 ms)
+[       OK ] TableTest.ApproximateOffsetOfPlain (1 ms)
 [ RUN      ] TableTest.ApproximateOffsetOfCompressed
 skipping compression tests
 [       OK ] TableTest.ApproximateOffsetOfCompressed (0 ms)
-[----------] 2 tests from TableTest (2 ms total)
+[----------] 2 tests from TableTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 11 tests from 3 test suites ran. (7947 ms total)
+[==========] 11 tests from 3 test suites ran. (8023 ms total)
 [  PASSED  ] 11 tests.
 <end of output>
-Test time =   8.88 sec
+Test time =   8.03 sec
 ----------------------------------------------------------
 Test Passed.
-"table_test" end time: Jan 18 16:11 CST
+"table_test" end time: Jan 22 11:53 CST
 "table_test" time elapsed: 00:00:08
 ----------------------------------------------------------
 
@@ -3188,7 +3188,7 @@ Test Passed.
 24/31 Test: arena_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/arena_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"arena_test" start time: Jan 18 16:11 CST
+"arena_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 2 tests from 1 test suite.
@@ -3197,17 +3197,17 @@ Output:
 [ RUN      ] ArenaTest.Empty
 [       OK ] ArenaTest.Empty (0 ms)
 [ RUN      ] ArenaTest.Simple
-[       OK ] ArenaTest.Simple (13 ms)
-[----------] 2 tests from ArenaTest (13 ms total)
+[       OK ] ArenaTest.Simple (15 ms)
+[----------] 2 tests from ArenaTest (15 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (13 ms total)
+[==========] 2 tests from 1 test suite ran. (15 ms total)
 [  PASSED  ] 2 tests.
 <end of output>
-Test time =   0.33 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"arena_test" end time: Jan 18 16:11 CST
+"arena_test" end time: Jan 22 11:53 CST
 "arena_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3215,7 +3215,7 @@ Test Passed.
 25/31 Test: bloom_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/bloom_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"bloom_test" start time: Jan 18 16:11 CST
+"bloom_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 3 tests from 1 test suite.
@@ -3271,10 +3271,10 @@ Filters: 33 good, 4 mediocre
 [==========] 3 tests from 1 test suite ran. (22 ms total)
 [  PASSED  ] 3 tests.
 <end of output>
-Test time =   0.32 sec
+Test time =   0.03 sec
 ----------------------------------------------------------
 Test Passed.
-"bloom_test" end time: Jan 18 16:11 CST
+"bloom_test" end time: Jan 22 11:53 CST
 "bloom_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3282,7 +3282,7 @@ Test Passed.
 26/31 Test: cache_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/cache_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"cache_test" start time: Jan 18 16:11 CST
+"cache_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 9 tests from 1 test suite.
@@ -3309,13 +3309,13 @@ Output:
 [----------] 9 tests from CacheTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 9 tests from 1 test suite ran. (1 ms total)
+[==========] 9 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 9 tests.
 <end of output>
-Test time =   0.30 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"cache_test" end time: Jan 18 16:11 CST
+"cache_test" end time: Jan 22 11:53 CST
 "cache_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3323,14 +3323,14 @@ Test Passed.
 27/31 Test: coding_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/coding_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"coding_test" start time: Jan 18 16:11 CST
+"coding_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 10 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 10 tests from Coding
 [ RUN      ] Coding.Fixed32
-[       OK ] Coding.Fixed32 (2 ms)
+[       OK ] Coding.Fixed32 (3 ms)
 [ RUN      ] Coding.Fixed64
 [       OK ] Coding.Fixed64 (0 ms)
 [ RUN      ] Coding.EncodingOutput
@@ -3349,16 +3349,16 @@ Output:
 [       OK ] Coding.Varint64Truncation (0 ms)
 [ RUN      ] Coding.Strings
 [       OK ] Coding.Strings (0 ms)
-[----------] 10 tests from Coding (2 ms total)
+[----------] 10 tests from Coding (3 ms total)
 
 [----------] Global test environment tear-down
-[==========] 10 tests from 1 test suite ran. (2 ms total)
+[==========] 10 tests from 1 test suite ran. (3 ms total)
 [  PASSED  ] 10 tests.
 <end of output>
-Test time =   0.30 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"coding_test" end time: Jan 18 16:11 CST
+"coding_test" end time: Jan 22 11:53 CST
 "coding_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3366,7 +3366,7 @@ Test Passed.
 28/31 Test: crc32c_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/crc32c_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"crc32c_test" start time: Jan 18 16:11 CST
+"crc32c_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 4 tests from 1 test suite.
@@ -3386,10 +3386,10 @@ Output:
 [==========] 4 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 4 tests.
 <end of output>
-Test time =   0.32 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"crc32c_test" end time: Jan 18 16:11 CST
+"crc32c_test" end time: Jan 22 11:53 CST
 "crc32c_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3397,7 +3397,7 @@ Test Passed.
 29/31 Test: hash_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/hash_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"hash_test" start time: Jan 18 16:11 CST
+"hash_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 1 test from 1 test suite.
@@ -3411,10 +3411,10 @@ Output:
 [==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.41 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"hash_test" end time: Jan 18 16:11 CST
+"hash_test" end time: Jan 22 11:53 CST
 "hash_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3422,7 +3422,7 @@ Test Passed.
 30/31 Test: logging_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/logging_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"logging_test" start time: Jan 18 16:11 CST
+"logging_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 5 tests from 1 test suite.
@@ -3431,23 +3431,23 @@ Output:
 [ RUN      ] Logging.NumberToString
 [       OK ] Logging.NumberToString (0 ms)
 [ RUN      ] Logging.ConsumeDecimalNumberRoundtrip
-[       OK ] Logging.ConsumeDecimalNumberRoundtrip (1 ms)
+[       OK ] Logging.ConsumeDecimalNumberRoundtrip (0 ms)
 [ RUN      ] Logging.ConsumeDecimalNumberRoundtripWithPadding
 [       OK ] Logging.ConsumeDecimalNumberRoundtripWithPadding (0 ms)
 [ RUN      ] Logging.ConsumeDecimalNumberOverflow
 [       OK ] Logging.ConsumeDecimalNumberOverflow (0 ms)
 [ RUN      ] Logging.ConsumeDecimalNumberNoDigits
 [       OK ] Logging.ConsumeDecimalNumberNoDigits (0 ms)
-[----------] 5 tests from Logging (1 ms total)
+[----------] 5 tests from Logging (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 5 tests from 1 test suite ran. (1 ms total)
+[==========] 5 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 5 tests.
 <end of output>
-Test time =   0.30 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"logging_test" end time: Jan 18 16:11 CST
+"logging_test" end time: Jan 22 11:53 CST
 "logging_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3455,37 +3455,37 @@ Test Passed.
 31/31 Test: env_posix_test
 Command: "/Users/hcs/Documents/version-control/leveldb/build/env_posix_test"
 Directory: /Users/hcs/Documents/version-control/leveldb/build
-"env_posix_test" start time: Jan 18 16:11 CST
+"env_posix_test" start time: Jan 22 11:53 CST
 Output:
 ----------------------------------------------------------
 [==========] Running 7 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 7 tests from EnvPosixTest
 [ RUN      ] EnvPosixTest.TestOpenOnRead
-[       OK ] EnvPosixTest.TestOpenOnRead (2 ms)
+[       OK ] EnvPosixTest.TestOpenOnRead (1 ms)
 [ RUN      ] EnvPosixTest.TestCloseOnExecSequentialFile
-[       OK ] EnvPosixTest.TestCloseOnExecSequentialFile (3 ms)
+[       OK ] EnvPosixTest.TestCloseOnExecSequentialFile (5 ms)
 [ RUN      ] EnvPosixTest.TestCloseOnExecRandomAccessFile
-[       OK ] EnvPosixTest.TestCloseOnExecRandomAccessFile (4 ms)
+[       OK ] EnvPosixTest.TestCloseOnExecRandomAccessFile (3 ms)
 [ RUN      ] EnvPosixTest.TestCloseOnExecWritableFile
-[       OK ] EnvPosixTest.TestCloseOnExecWritableFile (3 ms)
+[       OK ] EnvPosixTest.TestCloseOnExecWritableFile (5 ms)
 [ RUN      ] EnvPosixTest.TestCloseOnExecAppendableFile
-[       OK ] EnvPosixTest.TestCloseOnExecAppendableFile (3 ms)
+[       OK ] EnvPosixTest.TestCloseOnExecAppendableFile (5 ms)
 [ RUN      ] EnvPosixTest.TestCloseOnExecLockFile
 [       OK ] EnvPosixTest.TestCloseOnExecLockFile (4 ms)
 [ RUN      ] EnvPosixTest.TestCloseOnExecLogger
 [       OK ] EnvPosixTest.TestCloseOnExecLogger (3 ms)
-[----------] 7 tests from EnvPosixTest (22 ms total)
+[----------] 7 tests from EnvPosixTest (26 ms total)
 
 [----------] Global test environment tear-down
-[==========] 7 tests from 1 test suite ran. (23 ms total)
+[==========] 7 tests from 1 test suite ran. (26 ms total)
 [  PASSED  ] 7 tests.
 <end of output>
-Test time =   0.34 sec
+Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"env_posix_test" end time: Jan 18 16:11 CST
+"env_posix_test" end time: Jan 22 11:53 CST
 "env_posix_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jan 18 16:11 CST
+End testing: Jan 22 11:53 CST
