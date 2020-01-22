@@ -79,9 +79,12 @@ class DBImpl : public DB {
   // Information for a manual compaction
   struct ManualCompaction {
     int level;
+    //为了避免外部指定的 key-range 过大，一 次 compact 过多的 sstable 文件，
+    //manual_compaction 可能不会一次做完，所以有 done 来标 识是否已经全部完成
     bool done;
     const InternalKey* begin;  // null means beginning of key range
     const InternalKey* end;    // null means end of key range
+    //tmp_storage 保存上一次 compact 到的 end-key，即下一次的 start- key
     InternalKey tmp_storage;   // Used to keep track of compaction progress
   };
 

@@ -307,6 +307,7 @@ void DBImpl::DeleteObsoleteFiles() {
 }
 
 //重放log，按照wal log恢复db
+//完成后db 恢复成上一次退出前的状态。
 Status DBImpl::Recover(VersionEdit* edit, bool* save_manifest) {
   mutex_.AssertHeld();
 
@@ -733,6 +734,7 @@ void DBImpl::RecordBackgroundError(const Status& s) {
 
 void DBImpl::MaybeScheduleCompaction() {
   mutex_.AssertHeld();
+  //如果 compact 已经运行或者 db 正在退出，直接返回。
   if (background_compaction_scheduled_) {
     // Already scheduled
   } else if (shutting_down_.load(std::memory_order_acquire)) {
@@ -772,6 +774,7 @@ void DBImpl::BackgroundCall() {
   background_work_finished_signal_.SignalAll();
 }
 
+//compaction过程
 void DBImpl::BackgroundCompaction() {
   mutex_.AssertHeld();
 
@@ -803,6 +806,8 @@ void DBImpl::BackgroundCompaction() {
   Status status;
   if (c == nullptr) {
     // Nothing to do
+  //这条分支处理level+1中没有文件需要和level中的那个文件进行合并的情况。
+  //这种情况，很简单，直接把level中的那个需要合并的文件移动到level+1中即可。
   } else if (!is_manual && c->IsTrivialMove()) {
     // Move file to next level
     assert(c->num_input_files(0) == 1);
@@ -896,6 +901,9 @@ Status DBImpl::OpenCompactionOutputFile(CompactionState* compact) {
   return s;
 }
 
+//将当前的sstable写盘,主要原因
+//1. 当前的sstable是否已经足够大了
+//2. 当前的sstable是否和过多的level+2中的文件重合
 Status DBImpl::FinishCompactionOutputFile(CompactionState* compact,
                                           Iterator* input) {
   assert(compact != nullptr);
@@ -945,6 +953,7 @@ Status DBImpl::FinishCompactionOutputFile(CompactionState* compact,
   return s;
 }
 
+//将compact结果应用到version
 Status DBImpl::InstallCompactionResults(CompactionState* compact) {
   mutex_.AssertHeld();
   Log(options_.info_log, "Compacted %d@%d + %d@%d files => %lld bytes",
@@ -963,6 +972,7 @@ Status DBImpl::InstallCompactionResults(CompactionState* compact) {
   return versions_->LogAndApply(compact->compaction->edit(), &mutex_);
 }
 
+//compaction核心工作
 Status DBImpl::DoCompactionWork(CompactionState* compact) {
   const uint64_t start_micros = env_->NowMicros();
   int64_t imm_micros = 0;  // Micros spent doing imm_ compactions
@@ -981,6 +991,8 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
     compact->smallest_snapshot = snapshots_.oldest()->sequence_number();
   }
 
+  //获得一个可以遍历需要compaction的所有文件(level和level+1中所有需要进行compaction操作的文件)的迭代器，
+  //每个迭代器对应一个key-value
   Iterator* input = versions_->MakeInputIterator(compact->compaction);
 
   // Release mutex while we're actually doing the compaction work
@@ -997,8 +1009,9 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
     if (has_imm_.load(std::memory_order_relaxed)) {
       const uint64_t imm_start = env_->NowMicros();
       mutex_.Lock();
+      //主要是为了防止imm_没有及时写盘造成用户线程不能写mem
       if (imm_ != nullptr) {
-        CompactMemTable();
+        CompactMemTable(); //将imm_写入磁盘
         // Wake up MakeRoomForWrite() if necessary.
         background_work_finished_signal_.SignalAll();
       }
@@ -1007,6 +1020,8 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
     }
 
     Slice key = input->key();
+    //通过ShouldStopBefore函数判断是否符合生成一个新的sstable的条件，
+    //如果符合的话就将这个sstable写盘，如果不符合的话，就继续往里面加key-value
     if (compact->compaction->ShouldStopBefore(key) &&
         compact->builder != nullptr) {
       status = FinishCompactionOutputFile(compact, input);
@@ -1016,6 +1031,7 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
     }
 
     // Handle key/value, add to state, etc.
+    //用于标记一个key是否应该加入到当前的sstable中。如果drop=true则说明这个当前key应该被丢弃
     bool drop = false;
     if (!ParseInternalKey(key, &ikey)) {
       // Do not hide error keys
@@ -1023,6 +1039,7 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
       has_current_user_key = false;
       last_sequence_for_key = kMaxSequenceNumber;
     } else {
+      //判断当前迭代器的key和前面加入的一个key是否相等，如果相等的话，那说明这个key是一个过期的key，应该被丢弃
       if (!has_current_user_key ||
           user_comparator()->Compare(ikey.user_key, Slice(current_user_key)) !=
               0) {
@@ -1032,9 +1049,12 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
         last_sequence_for_key = kMaxSequenceNumber;
       }
 
+      //说明不在快照序列号中，该key肯定是一个过期key了
+      //todo
       if (last_sequence_for_key <= compact->smallest_snapshot) {
         // Hidden by an newer entry for same user key
         drop = true;  // (A)
+      //类型是删除
       } else if (ikey.type == kTypeDeletion &&
                  ikey.sequence <= compact->smallest_snapshot &&
                  compact->compaction->IsBaseLevelForKey(ikey.user_key)) {
@@ -1060,6 +1080,8 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
         (int)last_sequence_for_key, (int)compact->smallest_snapshot);
 #endif
 
+    //drop为false，说明当前key应该被保留下来。
+    //下面就将当前迭代器对应的key-value加入到sstable中，就是通过TableBuilder完成这些工作
     if (!drop) {
       // Open output file if necessary
       if (compact->builder == nullptr) {
@@ -1585,6 +1607,7 @@ Status DB::Open(const Options& options, const std::string& dbname, DB** dbptr) {
   }
   if (s.ok()) {
     impl->DeleteObsoleteFiles();
+    //启动完毕，可能会主动触发 compact。
     impl->MaybeScheduleCompaction();
   }
   impl->mutex_.Unlock();

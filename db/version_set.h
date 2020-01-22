@@ -176,6 +176,7 @@ class Version {
   // are initialized by Finalize().
   //触发compaction的信息
   //最适合进行compaction的level, 通过版本控制里面的compaction_score_变量进行衡量
+  //score 越大，表示该 level 越不均衡，需要更优先进行 compact
   double compaction_score_;
   int compaction_level_;
 };

@@ -29,6 +29,7 @@ struct FileMetaData {
 };
 
 //两个版本之间的差量delta
+//每次 compact 之后都会将对应的 VersionEdit encode 入 manifest 文件。
 class VersionEdit {
  public:
   VersionEdit() { Clear(); }
