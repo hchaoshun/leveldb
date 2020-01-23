@@ -778,11 +778,13 @@ void DBImpl::BackgroundCall() {
 void DBImpl::BackgroundCompaction() {
   mutex_.AssertHeld();
 
+  //minor compaction
   if (imm_ != nullptr) {
     CompactMemTable(); //将imm_写到level 0
     return;
   }
 
+  //major compaction
   Compaction* c;
   bool is_manual = (manual_compaction_ != nullptr);
   InternalKey manual_end;
@@ -800,7 +802,9 @@ void DBImpl::BackgroundCompaction() {
         (m->end ? m->end->DebugString().c_str() : "(end)"),
         (m->done ? "(end)" : manual_end.DebugString().c_str()));
   } else {
-    c = versions_->PickCompaction(); //找出最适合compaction的level
+    //找出最适合compaction的level
+    //通过触发原因寻找
+    c = versions_->PickCompaction();
   }
 
   Status status;
@@ -859,6 +863,7 @@ void DBImpl::BackgroundCompaction() {
   }
 }
 
+//compaction整合完毕后的后期清理工作
 void DBImpl::CleanupCompaction(CompactionState* compact) {
   mutex_.AssertHeld();
   if (compact->builder != nullptr) {
@@ -876,6 +881,7 @@ void DBImpl::CleanupCompaction(CompactionState* compact) {
   delete compact;
 }
 
+//初始化DBImpl::CompactionState的变量，为磁盘写入做准备
 Status DBImpl::OpenCompactionOutputFile(CompactionState* compact) {
   assert(compact != nullptr);
   assert(compact->builder == nullptr);
@@ -1013,6 +1019,7 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
       if (imm_ != nullptr) {
         CompactMemTable(); //将imm_写入磁盘
         // Wake up MakeRoomForWrite() if necessary.
+        //todo 条件变量的作用?
         background_work_finished_signal_.SignalAll();
       }
       mutex_.Unlock();
@@ -1049,8 +1056,7 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
         last_sequence_for_key = kMaxSequenceNumber;
       }
 
-      //说明不在快照序列号中，该key肯定是一个过期key了
-      //todo
+      //小于快照序列号，该key肯定是一个过期key了
       if (last_sequence_for_key <= compact->smallest_snapshot) {
         // Hidden by an newer entry for same user key
         drop = true;  // (A)
@@ -1136,6 +1142,7 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
   stats_[compact->compaction->level() + 1].Add(stats);
 
   if (status.ok()) {
+    //最终结果应用到version
     status = InstallCompactionResults(compact);
   }
   if (!status.ok()) {
