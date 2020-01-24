@@ -351,11 +351,12 @@ void Version::ForEachOverlapping(Slice user_key, Slice internal_key, void* arg,
 
 
 /*
-   1. 对于第0层文件，因为这些文件有可能相交，所以要迭代所有文件，把和查询键值有交集的文件添加进一个临时的集合中。
-   2. 对于第1层以及以上文件，因为这些文件不相交，所以只要二分查找文件即可。
-   3. 根据找到的文件，调用table_cache->Get方法获取具体的value值。
-      对于第0层文件，因为获取到查询的文件不止一个，所以跟新状态保存的是第一个查找到的文件。
-   4. 将找到的值存入传进的参数。
+ *在磁盘文件中搜寻key
+ * 1. 对于第0层文件，因为这些文件有可能相交，所以要迭代所有文件，把和查询键值有交集的文件添加进一个临时的集合中。
+ * 2. 对于第1层以及以上文件，因为这些文件不相交，所以只要二分查找文件即可。
+ * 3. 根据找到的文件，调用table_cache->Get方法获取具体的value值。
+ *    对于第0层文件，因为获取到查询的文件不止一个，所以跟新状态保存的是第一个查找到的文件。
+ * 4. 将找到的值存入传进的参数。
  */
 Status Version::Get(const ReadOptions& options, const LookupKey& k,
                     std::string* value, GetStats* stats) {
