@@ -453,6 +453,7 @@ bool Version::UpdateStats(const GetStats& stats) {
   return false;
 }
 
+//todo
 bool Version::RecordReadSample(Slice internal_key) {
   ParsedInternalKey ikey;
   if (!ParseInternalKey(internal_key, &ikey)) {

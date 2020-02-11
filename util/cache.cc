@@ -46,6 +46,7 @@ struct LRUHandle {
   LRUHandle* next_hash; //hashtable里指向下一个hash值相同的节点，解决hash碰撞
   LRUHandle* next; //lru里指向下一个节点
   LRUHandle* prev;
+  // 占用的空间
   size_t charge;  // TODO(opt): Only allow uint32_t?
   size_t key_length;
   bool in_cache;     // Whether entry is in the cache.
@@ -77,10 +78,13 @@ class HandleTable {
     return *FindPointer(key, hash);
   }
 
+  //返回值是FindPointer返回的二级指针
   LRUHandle* Insert(LRUHandle* h) {
     //存在和h相同的节点则替换，不存在则添加
     LRUHandle** ptr = FindPointer(h->key(), h->hash);
     LRUHandle* old = *ptr;
+    //old等于nullptr表示没有找到，&old = ptr是指slot的trailing，此时添加h
+    //old不等于nullptr表示找到，此时用用新节点替换旧节点
     h->next_hash = (old == nullptr ? nullptr : old->next_hash);
     *ptr = h;
     if (old == nullptr) {
@@ -114,6 +118,7 @@ class HandleTable {
   // Return a pointer to slot that points to a cache entry that
   // matches key/hash.  If there is no such cache entry, return a
   // pointer to the trailing slot in the corresponding linked list.
+  // 注意返回的是一级指针,没找到返回slot 的trailing
   LRUHandle** FindPointer(const Slice& key, uint32_t hash) {
     //hash & (length_ - 1)的运算结果是0到length-1;
     LRUHandle** ptr = &list_[hash & (length_ - 1)];
@@ -129,16 +134,23 @@ class HandleTable {
     while (new_length < elems_) {
       new_length *= 2;
     }
+    //只给一级指针分配内存块
     LRUHandle** new_list = new LRUHandle*[new_length];
     memset(new_list, 0, sizeof(new_list[0]) * new_length);
     uint32_t count = 0;
-    for (uint32_t i = 0; i < length_; i++) {
+    for (uint32_t i = 0; i < length_; i++) { //遍历一级指针
+      //下面遍历的逻辑是重新定位h属于的一级指针。并在新的一级指针上组成新的二级链表。
       LRUHandle* h = list_[i];
       while (h != nullptr) {
         LRUHandle* next = h->next_hash;
         uint32_t hash = h->hash;
+        // 定位新的一级指针 *ptr就是new_list[hash & (new_length - 1)]
         LRUHandle** ptr = &new_list[hash & (new_length - 1)];
+        // 如果是第一次运行，则*ptr为NULL，其他则是取到上个循环h的地址
+        // 意思是同一个slot里，节点的next_hash指向上一个节点，这与常规hash链相反
         h->next_hash = *ptr;
+        // new_list[hash & (new_length - 1)] = h;
+        // hash桶的第一个节点是最后一个插入值
         *ptr = h;
         h = next;
         count++;
