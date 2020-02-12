@@ -104,6 +104,7 @@ class LEVELDB_EXPORT Cache {
   void LRU_Append(Handle* e);
   void Unref(Handle* e);
 
+  //todo  Scott Meyers: 将文件间的编译依存关系降至最低
   struct Rep;
   Rep* rep_;
 };

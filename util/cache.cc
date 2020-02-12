@@ -278,11 +278,11 @@ void LRUCache::LRU_Append(LRUHandle* list, LRUHandle* e) {
   e->next->prev = e;
 }
 
+//只是锁住了shard_的一个lrucache
 Cache::Handle* LRUCache::Lookup(const Slice& key, uint32_t hash) {
   MutexLock l(&mutex_);
   LRUHandle* e = table_.Lookup(key, hash);
   if (e != nullptr) {
-    //todo
     Ref(e);
   }
   return reinterpret_cast<Cache::Handle*>(e);

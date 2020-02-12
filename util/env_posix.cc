@@ -69,6 +69,7 @@ Status PosixError(const std::string& context, int error_number) {
 // Currently used to limit read-only file descriptors and mmap file usage
 // so that we do not run out of file descriptors or virtual memory, or run into
 // kernel performance problems for very large databases.
+//限制资源的使用类
 class Limiter {
  public:
   // Limit maximum number of resources to |max_acquires|.
@@ -284,7 +285,7 @@ class PosixWritableFile final : public WritableFile {
     }
 
     // Small writes go to buffer, large writes are written directly.
-    //todo why write to buffer, not to io directly ?
+    //使用buf缓冲，减少io
     if (write_size < kWritableFileBufferSize) {
       std::memcpy(buf_, write_data, write_size);
       pos_ = write_size;
@@ -325,6 +326,7 @@ class PosixWritableFile final : public WritableFile {
   }
 
  private:
+  //将buf写入fd
   Status FlushBuffer() {
     Status status = WriteUnbuffered(buf_, pos_);
     pos_ = 0;
@@ -470,6 +472,7 @@ class PosixFileLock : public FileLock {
 // same process.
 //
 // Instances are thread-safe because all member data is guarded by a mutex.
+//用set实现锁操作
 class PosixLockTable {
  public:
   //todo LOCKS_EXCLUDED, GUARDED_BY ?
@@ -744,6 +747,7 @@ class PosixEnv : public Env {
   port::CondVar background_work_cv_ GUARDED_BY(background_work_mutex_);
   bool started_background_thread_ GUARDED_BY(background_work_mutex_);
 
+  //线程安全的任务队列
   std::queue<BackgroundWorkItem> background_work_queue_
       GUARDED_BY(background_work_mutex_);
 
@@ -781,6 +785,7 @@ PosixEnv::PosixEnv()
       mmap_limiter_(MaxMmaps()),
       fd_limiter_(MaxOpenFiles()) {}
 
+//用于后台调度compaction
 //发出信号
 void PosixEnv::Schedule(
     void (*background_work_function)(void* background_work_arg),

@@ -18,6 +18,7 @@ namespace leveldb {
 Comparator::~Comparator() = default;
 
 namespace {
+//FindShortestSeparator和FindShortSuccessor主要在table_builder里创建table用
 class BytewiseComparatorImpl : public Comparator {
  public:
   BytewiseComparatorImpl() = default;
@@ -29,6 +30,7 @@ class BytewiseComparatorImpl : public Comparator {
   }
 
   //如果start<limit,就把start修改为*start和limit的共同前缀后面多一个字符加1
+  //abc < abcd, 最后为abd
   void FindShortestSeparator(std::string* start,
                              const Slice& limit) const override {
     // Find length of common prefix
