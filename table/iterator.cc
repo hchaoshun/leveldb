@@ -41,6 +41,7 @@ void Iterator::RegisterCleanup(CleanupFunction func, void* arg1, void* arg2) {
 
 namespace {
 
+//空迭代器不能使用
 class EmptyIterator : public Iterator {
  public:
   EmptyIterator(const Status& s) : status_(s) {}
@@ -50,7 +51,6 @@ class EmptyIterator : public Iterator {
   void Seek(const Slice& target) override {}
   void SeekToFirst() override {}
   void SeekToLast() override {}
-  //todo assert(false) ?
   void Next() override { assert(false); }
   void Prev() override { assert(false); }
   Slice key() const override {
