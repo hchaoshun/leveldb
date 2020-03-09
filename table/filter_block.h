@@ -45,6 +45,7 @@ class FilterBlockBuilder {
   void GenerateFilter();
 
   //keys_/start_/tmp_keys_是辅助变量
+  //用keys和start创建最终keys存入tmp_keys，最后用tmp_keys创建过滤器存入result中
   const FilterPolicy* policy_;
   std::string keys_;             // Flattened key contents
   std::vector<size_t> start_;    // Starting index in keys_ of each key

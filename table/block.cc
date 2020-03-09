@@ -27,7 +27,7 @@ Block::Block(const BlockContents& contents)
     : data_(contents.data.data()),
       size_(contents.data.size()),
       owned_(contents.heap_allocated) {
-  //block至少需要4bytes。block的TAIL里面记录number of restarts，假设所有的restarts都没有，那么存放的应该是0
+  //block至少需要4bytes记录TAIL里面number of restarts，假设所有的restarts都没有，那么存放的应该是0
   if (size_ < sizeof(uint32_t)) {
     size_ = 0;  // Error marker
   } else {
@@ -80,6 +80,7 @@ static inline const char* DecodeEntry(const char* p, const char* limit,
   return p;
 }
 
+//todo
 class Block::Iter : public Iterator {
  private:
   const Comparator* const comparator_;
@@ -88,7 +89,7 @@ class Block::Iter : public Iterator {
   uint32_t const num_restarts_;  // Number of uint32_t entries in restart array
 
   // current_ is offset in data_ of current entry.  >= restarts_ if !Valid
-  uint32_t current_;
+  uint32_t current_; //current_在两个restart_index_所指offset之间游动
   uint32_t restart_index_;  // Index of restart block in which current_ falls, current_所在restarts数组里的index
   std::string key_;
   Slice value_;
@@ -103,7 +104,7 @@ class Block::Iter : public Iterator {
     return (value_.data() + value_.size()) - data_;
   }
 
-  //获取index所在的restart point
+  //获取restart point的index的entry，即restarts[index]
   uint32_t GetRestartPoint(uint32_t index) {
     assert(index < num_restarts_);
     return DecodeFixed32(data_ + restarts_ + index * sizeof(uint32_t));
@@ -117,6 +118,8 @@ class Block::Iter : public Iterator {
 
     // ParseNextKey() starts at the end of value_, so set value_ accordingly
     uint32_t offset = GetRestartPoint(index);
+    // 注意：此时value里面只是引用到了restart point
+    // 这个位置的内存，但是value的长度却是设置为0
     value_ = Slice(data_ + offset, 0);
   }
 
@@ -149,6 +152,7 @@ class Block::Iter : public Iterator {
     ParseNextKey();
   }
 
+  //todo
   void Prev() override {
     assert(Valid());
 

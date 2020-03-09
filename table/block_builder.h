@@ -16,6 +16,7 @@ namespace leveldb {
 struct Options;
 
 //存储data block或metaindex block或index block内容，3个block的组织结构一致
+//正常的操作逻辑应该是不断调用add, 最后调用finish
 class BlockBuilder {
  public:
   explicit BlockBuilder(const Options* options);
@@ -44,7 +45,7 @@ class BlockBuilder {
 
  private:
   const Options* options_;
-  std::string buffer_;              // Destination buffer
+  std::string buffer_;              // Destination buffer，存储data block最终数据
   std::vector<uint32_t> restarts_;  // Restart points
   int counter_;                     // Number of entries emitted since restart
   bool finished_;                   // Has Finish() been called?
