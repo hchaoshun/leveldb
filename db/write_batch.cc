@@ -115,6 +115,7 @@ void WriteBatch::Append(const WriteBatch& source) {
   WriteBatchInternal::Append(this, &source);
 }
 
+//插入和删除都是往memtable里add
 namespace {
 class MemTableInserter : public WriteBatch::Handler {
  public:

@@ -63,6 +63,7 @@ Status Footer::DecodeFrom(Slice* input) {
 }
 
 //从磁盘里面读block
+//磁盘里的sstable的物理结构是data compressiontype crc
 Status ReadBlock(RandomAccessFile* file, const ReadOptions& options,
                  const BlockHandle& handle, BlockContents* result) {
   result->data = Slice();

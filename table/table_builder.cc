@@ -42,7 +42,7 @@ struct TableBuilder::Rep {
   uint64_t offset;
   Status status;
   BlockBuilder data_block;
-  BlockBuilder index_block;
+  BlockBuilder index_block; //index_block的每一条k/v存储上一个data block的最大key信息
   std::string last_key;
   int64_t num_entries;
   bool closed;  // Either Finish() or Abandon() has been called.
@@ -57,7 +57,7 @@ struct TableBuilder::Rep {
   // blocks.
   //
   // Invariant: r->pending_index_entry is true only if data_block is empty.
-  //pending_index_entry 标志位用来判定是不是data block的第一个key
+  //pending_index_entry 标志位用来判定是不是data block的第一个key,即是不是第一次写block
   //pending_handle里面存放的是上一个data block的位置信息
   bool pending_index_entry;
   BlockHandle pending_handle;  // Handle to add to index block
@@ -105,6 +105,8 @@ void TableBuilder::Add(const Slice& key, const Slice& value) {
   //当data block插入第一个key-value的时候，就需要计算分割key，以及存入index block
   //上一个data block Flush的时候，会将pending_index_entry标志位置位，
   //当下一个data block第一个key-value到来后，成功往index block插入分割key之后，pending_index_entry清零
+  //其中last_key是上一个data block中最大的key,也就是index_block中存储的key是上一个data block中最大key的分割，
+  //value存储pending_handle是对应key的位置信息
   if (r->pending_index_entry) {
     assert(r->data_block.empty());
     //如果last_key<key,就把last_key修改为last_key和key的共同前缀后面多一个字符加1
@@ -124,13 +126,15 @@ void TableBuilder::Add(const Slice& key, const Slice& value) {
   r->num_entries++;
   r->data_block.Add(key, value);
 
-  //估算当前data block的长度，如果超过了阈值，就要Flush
+  //估算当前data block的长度，如果超过了阈值，就要Flush，阈值默认是4k
   const size_t estimated_block_size = r->data_block.CurrentSizeEstimate();
   if (estimated_block_size >= r->options.block_size) {
     Flush();
   }
 }
 
+//flush后pending_index_entry设置为true表示本data block已经写完,同时设置pending_handle为
+//本block的位置信息,为添加下一个block时存储到index_block
 void TableBuilder::Flush() {
   Rep* r = rep_;
   assert(!r->closed);
@@ -191,8 +195,7 @@ void TableBuilder::WriteBlock(BlockBuilder* block, BlockHandle* handle) {
   block->Reset();
 }
 
-//将data block写入文件
-//此处handle即为前面传入的 r->pending_handle,记录上一个data block的offset和size
+//将data block写入文件, 并将data block的offset和size写入handle，即pending_handle
 void TableBuilder::WriteRawBlock(const Slice& block_contents,
                                  CompressionType type, BlockHandle* handle) {
   Rep* r = rep_;
@@ -214,6 +217,7 @@ void TableBuilder::WriteRawBlock(const Slice& block_contents,
 
 Status TableBuilder::status() const { return rep_->status; }
 
+//data block已经写完,接下来依次写入filter block, meta index block, index block, footer
 Status TableBuilder::Finish() {
   Rep* r = rep_;
   Flush();

@@ -28,13 +28,14 @@ struct Table::Rep {
   Status status;
   RandomAccessFile* file;
   uint64_t cache_id;
-  FilterBlockReader* filter;
-  const char* filter_data;
+  FilterBlockReader* filter; //bloom filter
+  const char* filter_data; //bloom filter 的值
 
   BlockHandle metaindex_handle;  // Handle to metaindex_block: saved from footer
   Block* index_block;
 };
 
+//用Table::Rep初始化table，并用table初始化meta
 Status Table::Open(const Options& options, RandomAccessFile* file,
                    uint64_t size, Table** table) {
   *table = nullptr;
@@ -223,7 +224,8 @@ Iterator* Table::NewIterator(const ReadOptions& options) const {
       &Table::BlockReader, const_cast<Table*>(this), options);
 }
 
-//block里存在k则执行handle_result
+//todo
+//利用index_block在data block里寻找k，找到则执行handle_result
 Status Table::InternalGet(const ReadOptions& options, const Slice& k, void* arg,
                           void (*handle_result)(void*, const Slice&,
                                                 const Slice&)) {
