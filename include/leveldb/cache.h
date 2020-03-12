@@ -23,8 +23,10 @@
 #include "leveldb/export.h"
 #include "leveldb/slice.h"
 
-//leveldb缓存里key是cache_id + data block里的offset,
-//value最终会被强制转换成block指针
+//leveldb有分为block_cache和table_cache
+//缓存block为减少io，缓存table为快速定位table
+//block_cache缓存里key是cache_id + data block里的offset, value最终会被强制转换成block指针
+//table_cache缓存里key是file number 文件编号，value是{file,table}
 namespace leveldb {
 
 class LEVELDB_EXPORT Cache;

@@ -20,6 +20,10 @@ namespace leveldb {
 
 class Env;
 
+//TableCache相当于所有打开的.sst文件在内存中的管理结构，内部采用LRUCache，
+//每个打开的.sst文件在LRUCache中都有一项：map<file_number -> {file, table}>
+//从这个TableAndFile指针，就可以获得这个文件的Table指针，随即可以得到这个文件的任何键值对。
+//所以这个缓存有点类似Linux内核中的inode，由indoe就可以获取磁盘的data block。
 class TableCache {
  public:
   TableCache(const std::string& dbname, const Options& options, int entries);

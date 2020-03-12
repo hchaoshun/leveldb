@@ -38,7 +38,8 @@ TableCache::TableCache(const std::string& dbname, const Options& options,
 
 TableCache::~TableCache() { delete cache_; }
 
-//找到file_number所属文件，然后读table，然后缓存，缓存value为TableAndFile指针
+//在缓存里寻找file number,并为handle赋值cache里的value
+//找到立即返回，没有找到则利用file number构造
 Status TableCache::FindTable(uint64_t file_number, uint64_t file_size,
                              Cache::Handle** handle) {
   Status s;
@@ -47,6 +48,7 @@ Status TableCache::FindTable(uint64_t file_number, uint64_t file_size,
   Slice key(buf, sizeof(buf));
   *handle = cache_->Lookup(key);
   if (*handle == nullptr) {
+    //最终是构造TableAndFile结构体
     std::string fname = TableFileName(dbname_, file_number);
     RandomAccessFile* file = nullptr;
     Table* table = nullptr;
@@ -76,7 +78,7 @@ Status TableCache::FindTable(uint64_t file_number, uint64_t file_size,
   return s;
 }
 
-// 返回某个.sst文件对应的Table对象的迭代器
+// 从缓存里立即返回table的迭代器
 Iterator* TableCache::NewIterator(const ReadOptions& options,
                                   uint64_t file_number, uint64_t file_size,
                                   Table** tableptr) {
@@ -99,6 +101,7 @@ Iterator* TableCache::NewIterator(const ReadOptions& options,
   return result;
 }
 
+//从缓存里找到table,然后从table里寻找k，找到执行handle_result函数
 Status TableCache::Get(const ReadOptions& options, uint64_t file_number,
                        uint64_t file_size, const Slice& k, void* arg,
                        void (*handle_result)(void*, const Slice&,
