@@ -122,6 +122,7 @@ void TwoLevelIterator::Prev() {
 //data_iter_一直往前走，可能会走到一个Block的边缘.
 //当走到边缘时，检查是否是需要设置到下一个非空的block的第一个iter那里
 void TwoLevelIterator::SkipEmptyDataBlocksForward() {
+  //条件成立说明走到低了
   while (data_iter_.iter() == nullptr || !data_iter_.Valid()) {
     // Move to next block
     if (!index_iter_.Valid()) {

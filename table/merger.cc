@@ -30,8 +30,9 @@ namespace leveldb {
 //iter->Next();
 //....
 
-
+//通过一次MergingIterator 的遍历，相当于完成了对多个子容器的归并排序。
 namespace {
+//todo
 class MergingIterator : public Iterator {
  public:
   // 注意，这里是对children进行了深拷贝
@@ -83,6 +84,7 @@ class MergingIterator : public Iterator {
     direction_ = kForward;
   }
 
+  //不断调用next是一个key从小往大方向迭代过程
   //Next()操作总是在找比当前key()要大的那个Iterator
   //1. 如果移动方向是kReverse，那么需要把除current_之外的iterator都seek到比key()大的地方
   //2. 移动current_->Next()
@@ -105,9 +107,7 @@ class MergingIterator : public Iterator {
     if (direction_ != kForward) {
       for (int i = 0; i < n_; i++) {
         IteratorWrapper* child = &children_[i];
-        // 如果当前的iterator不是current_
-        // current_不需要seek()
-        // 所以这里只移动其他的iterator
+        //把除current_之外的iterator都seek到比key()大的地方(不包括等于)
         if (child != current_) {
           // 那么把这个iterator移动>= key()的地方
           child->Seek(key());
@@ -122,11 +122,12 @@ class MergingIterator : public Iterator {
       direction_ = kForward;
     }
 
+    //这两步和归并排序类似
     current_->Next();
-    //找出最小key
     FindSmallest();
   }
 
+  //不断调用prev是一个从大往小方向迭代过程
   void Prev() override {
     assert(Valid());
 
@@ -206,6 +207,8 @@ class MergingIterator : public Iterator {
   const Comparator* comparator_;
   IteratorWrapper* children_;
   int n_;
+  //children_是一个迭代器数组，数组中的每个元素指向一个子容器当前的迭代器。
+  //迭代器的遍历过程就是不断寻找所有子容器当前迭代器所指向的key最小的迭代器的过程。
   IteratorWrapper* current_;
   Direction direction_;
 };
