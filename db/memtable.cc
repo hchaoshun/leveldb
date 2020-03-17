@@ -73,6 +73,8 @@ class MemTableIterator : public Iterator {
 
 Iterator* MemTable::NewIterator() { return new MemTableIterator(&table_); }
 
+// buf: |压缩编码(key_size+8)(5)|key|SequenceNumber(7)|type(1)|value_size|value|
+//key_size+8是因为internalkey 是key + seq + type,后两个字节和为8
 void MemTable::Add(SequenceNumber s, ValueType type, const Slice& key,
                    const Slice& value) {
   // Format of an entry is concatenation of:
@@ -82,17 +84,27 @@ void MemTable::Add(SequenceNumber s, ValueType type, const Slice& key,
   //  value bytes  : char[value.size()]
   size_t key_size = key.size();
   size_t val_size = value.size();
+  // internal_key是key加上SequenceNumber和ValueType后组成的新key，
+  // SequenceNumber和ValueType会占用8个字节
   size_t internal_key_size = key_size + 8;
+  // key-value编码后的长度，第一段存放internal_key_size，第二段存放internal_key，
+  // 第三段存放val_size，第四段存放val
   const size_t encoded_len = VarintLength(internal_key_size) +
                              internal_key_size + VarintLength(val_size) +
                              val_size;
   char* buf = arena_.Allocate(encoded_len);
+  // 先将internal_key_size放到buf中
   char* p = EncodeVarint32(buf, internal_key_size);
+  //再将key放到buf中，使用memcpy函数p是不会移位的，需要手动移位,注意key是原始key
   memcpy(p, key.data(), key_size);
   p += key_size;
+  //再将sequenceNumber和type放到buf,
+  //SequenceNumber左移8位，或上type；也就是前7个字节放SequenceNumber，后一个字节放ValueType
   EncodeFixed64(p, (s << 8) | type);
   p += 8;
+  // 再将val_size放到buf中
   p = EncodeVarint32(p, val_size);
+  // 最后放value
   memcpy(p, value.data(), val_size);
   assert(p + val_size == buf + encoded_len);
   table_.Insert(buf);

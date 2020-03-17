@@ -98,6 +98,7 @@ inline Slice ExtractUserKey(const Slice& internal_key) {
   return Slice(internal_key.data(), internal_key.size() - 8);
 }
 
+//比较器和下面的过滤器作用于InternalKey，两个都是用user_key封装
 // A comparator for internal keys that uses a specified comparator for
 // the user key portion and breaks ties by decreasing sequence number.
 class InternalKeyComparator : public Comparator {
@@ -183,6 +184,7 @@ inline bool ParseInternalKey(const Slice& internal_key,
 }
 
 // A helper class useful for DBImpl::Get()
+//todo
 class LookupKey {
  public:
   // Initialize *this for looking up user_key at a snapshot with
@@ -195,12 +197,15 @@ class LookupKey {
   ~LookupKey();
 
   // Return a key suitable for lookup in a MemTable.
+  // memtable_key：|压缩编码(key_size+8)|key|SequenceNumber|type|
   Slice memtable_key() const { return Slice(start_, end_ - start_); }
 
   // Return an internal key (suitable for passing to an internal iterator)
+  // internal_key: |key|SequenceNumber|type|
   Slice internal_key() const { return Slice(kstart_, end_ - kstart_); }
 
   // Return the user key
+  // user_key: |key|
   Slice user_key() const { return Slice(kstart_, end_ - kstart_ - 8); }
 
  private:
@@ -211,9 +216,9 @@ class LookupKey {
   //                                    <-- end_
   // The array is a suitable MemTable key.
   // The suffix starting with "userkey" can be used as an InternalKey.
-  const char* start_;
-  const char* kstart_;
-  const char* end_;
+  const char* start_; //key的开始位置
+  const char* kstart_; //跳过长度的key开始位置,跳过start_ 5个字节
+  const char* end_; //key的结尾位置
   char space_[200];  // Avoid allocation for short keys
 };
 

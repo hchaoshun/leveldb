@@ -11,9 +11,18 @@
 #include <cstdint>
 #include <vector>
 
+//arena的三种内存分配策略
+//1. bytes < 当前块剩余内存 => 直接在当前块分配。
+//2. 当前块剩余内存 < bytes < 1024 KB (默认内存块大小的 1 / 4) =>
+//   直接申请一个默认大小为 4096 KB 的内存块，然后分配内存。
+//3. 当前块剩余内存 < bytes && bytes > 1024 KB => 直接申请一个新的大小为 bytes 的内存块，并分配内存。
+
 namespace leveldb {
 
 //轻量级内存池对象，包括申请内存，分配内存，释放内存。
+//申请内存：使用 new 来向操作系统申请一块连续的内存区域。
+//分配内存：使用allocate将已经申请的内存分配给项目组件使用，
+//这体现在增加 alloc_ptr_ 和减少 alloc_bytes_remaining_ 这两个指针上。
 class Arena {
  public:
   Arena();

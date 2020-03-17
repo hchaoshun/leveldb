@@ -17,6 +17,8 @@ namespace leveldb {
 class InternalKeyComparator;
 class MemTableIterator;
 
+//memtable 存储的key编码：|压缩编码(key_size+8)|key|SequenceNumber|type|value_size|value|
+//是否存在value根据type决定
 class MemTable {
  public:
   // MemTables are reference counted.  The initial reference count

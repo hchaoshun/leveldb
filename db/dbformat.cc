@@ -16,7 +16,7 @@ namespace leveldb {
 static uint64_t PackSequenceAndType(uint64_t seq, ValueType t) {
   assert(seq <= kMaxSequenceNumber);
   assert(t <= kValueTypeForSeek);
-  //todo
+  //左移8位，或上type；也就是前7个字节放SequenceNumber，后一个字节放ValueType
   return (seq << 8) | t;
 }
 
@@ -46,6 +46,7 @@ const char* InternalKeyComparator::Name() const {
   return "leveldb.InternalKeyComparator";
 }
 
+//key升序排序，key相同的sequence number降序排序
 int InternalKeyComparator::Compare(const Slice& akey, const Slice& bkey) const {
   // Order by:
   //    increasing user key (according to user-supplied comparator)
