@@ -57,6 +57,8 @@ bool SomeFileOverlapsRange(const InternalKeyComparator& icmp,
                            const Slice* smallest_user_key,
                            const Slice* largest_user_key);
 
+//LevelDB通过version实现mvcc
+//Version表示一个版本的元信息，Version中主要包括一个FileMetaData指针的二维数组，分层记录了所有的SST文件信息
 class Version {
  public:
   //根据key来查询，GetStats记录了第一个读取的文件
@@ -93,6 +95,7 @@ class Version {
   // Samples are taken approximately once every config::kReadBytesPeriod
   // bytes.  Returns true if a new compaction may need to be triggered.
   // REQUIRES: lock is held
+  //todo db 迭代的时候使用？
   bool RecordReadSample(Slice key);
 
   // Reference count management (so Versions do not disappear out from
@@ -145,6 +148,7 @@ class Version {
 
   ~Version();
 
+  //返回一个二级迭代器，一级iterator定位到某层文件编号，二级iterator迭代table
   Iterator* NewConcatenatingIterator(const ReadOptions&, int level) const;
 
   // Call func(arg, level, f) for every file that overlaps user_key in
@@ -182,7 +186,7 @@ class Version {
 };
 
 //VersionSet是多个version组成的集合。current指出当前使用的version
-//保留旧有的Version，是为了支持合并时正在进行的读请求。
+//保留旧有的Version，是为了支持合并时正在进行的读请求。也就是mvcc
 class VersionSet {
  public:
   VersionSet(const std::string& dbname, const Options* options,

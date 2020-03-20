@@ -88,6 +88,7 @@ Version::~Version() {
 }
 
 //在files里寻找key所属的文件index
+//因为level0层以后的文件没有overlap，所以只需二分查找即可
 int FindFile(const InternalKeyComparator& icmp,
              const std::vector<FileMetaData*>& files, const Slice& key) {
   uint32_t left = 0;
@@ -219,6 +220,7 @@ class Version::LevelFileNumIterator : public Iterator {
 
 /*这里的file_value是取自于LevelFileNumIterator的value，它的value()函数
 把file number和size以Fixed 8byte的方式压缩成一个Slice对象并返回。*/
+//函数返回file number所属迭代器
 static Iterator* GetFileIterator(void* arg, const ReadOptions& options,
                                  const Slice& file_value) {
   TableCache* cache = reinterpret_cast<TableCache*>(arg);
@@ -233,6 +235,7 @@ static Iterator* GetFileIterator(void* arg, const ReadOptions& options,
 
 //直接返回一个TwoLevelIterator对象：
 //其第一级iterator是一个LevelFileNumIterator，第二级的迭代函数是GetFileIterator
+//二级iterator是从缓存里找到的table的iterator
 Iterator* Version::NewConcatenatingIterator(const ReadOptions& options,
                                             int level) const {
   return NewTwoLevelIterator(
@@ -279,6 +282,7 @@ struct Saver {
   std::string* value;
 };
 }  // namespace
+//将v存储到arg中并存储state状态
 static void SaveValue(void* arg, const Slice& ikey, const Slice& v) {
   Saver* s = reinterpret_cast<Saver*>(arg);
   ParsedInternalKey parsed_key;
@@ -298,6 +302,7 @@ static bool NewestFirst(FileMetaData* a, FileMetaData* b) {
   return a->number > b->number;
 }
 
+//stable里的get操作调用此函数
 void Version::ForEachOverlapping(Slice user_key, Slice internal_key, void* arg,
                                  bool (*func)(void*, int, FileMetaData*)) {
   const Comparator* ucmp = vset_->icmp_.user_comparator();
@@ -349,7 +354,7 @@ void Version::ForEachOverlapping(Slice user_key, Slice internal_key, void* arg,
   }
 }
 
-
+//先在table cache中查找table，再根据table定位key
 /*
  *在磁盘文件中搜寻key
  * 1. 对于第0层文件，因为这些文件有可能相交，所以要迭代所有文件，把和查询键值有交集的文件添加进一个临时的集合中。
@@ -368,6 +373,7 @@ Status Version::Get(const ReadOptions& options, const LookupKey& k,
     GetStats* stats;
     const ReadOptions* options;
     Slice ikey;
+    //todo 记录这两个的作用？
     FileMetaData* last_file_read; //记录上一次读到的文件
     int last_file_read_level; //记录上一次读到的文件所在的层次
 
@@ -393,12 +399,14 @@ Status Version::Get(const ReadOptions& options, const LookupKey& k,
       state->s = state->vset->table_cache_->Get(*state->options, f->number,
                                                 f->file_size, state->ikey,
                                                 &state->saver, SaveValue);
+      //找不到直接返回
       if (!state->s.ok()) {
         state->found = true;
         return false;
       }
       //根据saver的状态判断，如果是Not Found则向下搜索下一个更早的sst文件，其它值则返回。
       switch (state->saver.state) {
+        //没有则继续查找,体现在ForEachOverlapping的for循环里
         case kNotFound:
           return true;  // Keep searching in other files
         case kFound:
@@ -440,6 +448,7 @@ Status Version::Get(const ReadOptions& options, const LookupKey& k,
 }
 
 //返回true触发compaction
+//stats是上面的get操作没有命中存储的上一个seek文件
 bool Version::UpdateStats(const GetStats& stats) {
   FileMetaData* f = stats.seek_file;
   if (f != nullptr) {
@@ -510,7 +519,7 @@ bool Version::OverlapInLevel(int level, const Slice* smallest_user_key,
                                smallest_user_key, largest_user_key);
 }
 
-//选择level的策略为：如果level0和sstable的key有重合，则插入level0
+//选择level的策略为：如果level0和sstable的key没有重合，则插入level0
 //否则循环搜索之后的level，如果下一level和sstable的key有重合，则直接返回
 //如果没有重合，考虑下下个level和sstable的重合的key的量，如果超过了设定的阈值，则返回
 //（为了保证之后选取该sstable与下一level进行compact的时候，涉及下一level的文件不会太多，减小开销）。
@@ -622,7 +631,7 @@ std::string Version::DebugString() const {
 // A helper class so we can efficiently apply a whole sequence
 // of edits to a particular state without creating intermediate
 // Versions that contain full copies of the intermediate state.
-//这个类用于将manifest文件内容添加进当前版本，并将当前版本添加进版本链表
+//这个类用于构建新的version，首先将manifest文件内容添加进当前版本，并将当前版本添加进版本链表
 class VersionSet::Builder {
  private:
   // Helper to sort by v->files_[file_number].smallest

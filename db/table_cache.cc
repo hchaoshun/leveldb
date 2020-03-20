@@ -78,7 +78,7 @@ Status TableCache::FindTable(uint64_t file_number, uint64_t file_size,
   return s;
 }
 
-// 从缓存里立即返回table的迭代器
+// 从缓存里寻找table，然后返回table的迭代器
 Iterator* TableCache::NewIterator(const ReadOptions& options,
                                   uint64_t file_number, uint64_t file_size,
                                   Table** tableptr) {

@@ -225,7 +225,7 @@ Iterator* Table::NewIterator(const ReadOptions& options) const {
       &Table::BlockReader, const_cast<Table*>(this), options);
 }
 
-//todo
+//levelDB的get操作会执行此函数
 //利用index_block在data block里寻找k，找到则执行handle_result
 Status Table::InternalGet(const ReadOptions& options, const Slice& k, void* arg,
                           void (*handle_result)(void*, const Slice&,

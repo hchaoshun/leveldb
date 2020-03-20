@@ -102,6 +102,7 @@ class DBIter : public Iterator {
   }
 
   // Picks the number of bytes that can be read until a compaction is scheduled.
+  //todo ??
   size_t RandomCompactionPeriod() {
     return rnd_.Uniform(2 * config::kReadBytesPeriod);
   }
