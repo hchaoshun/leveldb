@@ -111,8 +111,8 @@ class HandleTable {
  private:
   // The table consists of an array of buckets where each bucket is
   // a linked list of cache entries that hash into the bucket.
-  uint32_t length_;
-  uint32_t elems_;
+  uint32_t length_;  // hashtable 的长度
+  uint32_t elems_;  // hashtable 的元素个数
   LRUHandle** list_;
 
   // Return a pointer to slot that points to a cache entry that
@@ -370,7 +370,7 @@ void LRUCache::Prune() {
 
 //因为levelDB是多线程的，每个线程访问缓冲区的时候都会将缓冲区锁住，为了多线程访问，尽可能快速，减少锁开销,
 //ShardedLRUCache内部有16个LRUCache，查找Key时首先计算key属于哪一个分片，分片的计算方法是取32位hash值的高4位，
-//然后在相应的LRUCache中进行查找，这样就大大减少了多线程的访问锁的开销
+//然后在相应的LRUCache中进行查找，这样就大大减少了多线程的访问锁的开销（由锁整个cache优化到锁1/16cache）
 static const int kNumShardBits = 4;
 static const int kNumShards = 1 << kNumShardBits; //2^4 = 16
 
